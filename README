@@ -1,0 +1,169 @@
+# Inventory Management API
+
+## Project Overview
+
+This project is a Flask-based REST API developed for a small retail company to manage inventory items. The system allows employees to add, update, view, and delete products from the inventory.
+
+The application also integrates with the OpenFoodFacts API to retrieve real product information using a barcode. This allows the system to supplement inventory data with product details such as brand and ingredients.
+
+The project includes:
+
+* A Flask REST API for inventory management
+* Integration with the OpenFoodFacts external API
+* A command-line interface (CLI) for interacting with the API
+* A testing suite using pytest
+
+---
+
+## Project Structure
+
+```
+inventory-management-api
+│
+├── app.py            # Flask API server
+├── inventory.py      # Mock inventory database
+├── external_api.py   # OpenFoodFacts integration
+├── cli.py            # Command line interface
+├── requirements.txt
+├── README.md
+│
+└── tests
+    └── test_api.py   # API tests
+```
+
+---
+
+## Installation and Setup
+
+1. Clone or download the project.
+
+2. Install dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+3. Start the Flask server:
+
+```
+python app.py
+```
+
+The API will run on:
+
+```
+http://127.0.0.1:5000
+```
+
+---
+
+## Using the CLI Interface
+
+After the server is running, start the CLI tool:
+
+```
+python cli.py
+```
+
+The CLI allows you to:
+
+* View all inventory items
+* Add a new product
+* Update price or stock
+* Delete a product
+* Search for product details using OpenFoodFacts
+
+Example CLI menu:
+
+```
+1 View inventory
+2 Add product
+3 Update product
+4 Delete product
+5 Search OpenFoodFacts
+6 Exit
+```
+
+---
+
+## API Endpoints
+
+Retrieve all inventory items
+
+```
+/inventory
+```
+
+Retrieve a specific item
+
+```
+/inventory/<id>
+```
+
+Add a new inventory item
+
+```
+/inventory
+```
+
+Update an existing item
+
+```
+/inventory/<id>
+```
+
+Delete an item
+
+```
+/inventory/<id>
+```
+
+---
+
+## External API Integration
+
+The system integrates with the OpenFoodFacts public API to fetch product information using a barcode.
+
+Example endpoint:
+
+```
+/external/<barcode>
+```
+
+Example request:
+
+```
+/external/737628064502
+```
+
+Example response:
+
+```
+{
+  "product_name": "Organic Almond Milk",
+  "brand": "Silk",
+  "ingredients": "Filtered water, almonds..."
+}
+```
+
+---
+
+## Running Tests
+
+The project includes automated tests for the API.
+
+Run the tests using:
+
+```
+pytest
+```
+
+---
+
+## Technologies Used
+
+* Python
+* Flask
+* Requests
+* Pytest
+* OpenFoodFacts API
