@@ -157,7 +157,13 @@ Run the tests using:
 ```
 pytest
 ```
+### External API Testing
 
+The OpenFoodFacts API was tested using the following command:
+
+curl http://127.0.0.1:5000/external/737628064502
+
+This returns product data including product_name, brand, and ingredients.
 ---
 
 ## Technologies Used

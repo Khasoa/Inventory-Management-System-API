@@ -21,7 +21,14 @@ def client():
     with app.test_client() as client:
         yield client
 
+def test_external_api(client):
+    response = client.get("/external/737628064502")
 
+    data = response.get_json()
+
+    assert response.status_code == 200
+    assert "status" in data
+    
 def test_get_inventory(client):
     response = client.get("/inventory")
 
